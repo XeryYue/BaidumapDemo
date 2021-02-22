@@ -54,7 +54,11 @@ const markerTemp = (lng, lat, title, address) => {
   const exportLng = document.querySelector('.info-exportLng')
   console.log(exportLng)
   exportLng.addEventListener('click', () => {
+    const lng_el = document.querySelector('#info-lng')
+    const lat_el = document.querySelector('#info-lat')
     console.log(lng, lat)
+    lng_el.value = lng
+    lat_el.value = lat
   })
 }
 
