@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#map-container {
+  height: 300px;
+  width: 500px;
+}

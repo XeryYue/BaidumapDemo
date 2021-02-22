@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+  <!-- <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=ieRqwiFZnamMsH2zA7HY2PlHToyEnRBr"></script> -->
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ieRqwiFZnamMsH2zA7HY2PlHToyEnRBr"></script>
+</head>
+<body>
+  <!-- <div id="container"></div> -->
+  <div id="app">
+    <!-- select picker -->
+    <div>
+      <select>
+        <option>福建省</option>
+      </select>
+      <select>
+        <option>厦门市</option>
+      </select>
+      <select>
+        <option>同安区</option>
+        <option>思明区</option>
+      </select>
+    </div>
+    <!-- inputs -->
+    <div>
+      <input placeholder="请输入门店位置" id="place" />
+      <div id="btnSearch">搜索地图</div>
+    </div>
+  </div>
+  <!-- map  -->
+  <div id="map-container"></div>
+  <div id="test"></div>
+  <script src="./index.js"></script>
+</body>
+</html>
