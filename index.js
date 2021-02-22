@@ -13,7 +13,6 @@ const initMap = (map, lng = 116.404, lat = 39.915) => {
   var top_left_navigation = new BMap.NavigationControl() //左上角，添加默认缩放平移控件
   map.addControl(top_left_control)
   map.addControl(top_left_navigation)
-  // markerTemp(point)
 }
 
 /**
@@ -21,15 +20,21 @@ const initMap = (map, lng = 116.404, lat = 39.915) => {
  * @param {*} info
  */
 const windowInfoTemp = (info = {}) => {
-  let content = `<div class="exportLng">导入经纬度</div>`
-  const el = document.querySelector('#test')
-  el.innerHTML = content
-  const btn = document.querySelector('.exportLng')
-  btn.addEventListener('click', () => {
-    console.log(info)
-  })
+  const { title, address } = info
+  let content = `<div class="info-container">
+  <p class="info-title">${title}</p>
+  <p class="info-addr">${address}</p>
+  <div class="info-exportLng">导入经纬度</div>
+  </div>`
+  return content
 }
-
+/**
+ *
+ * @param {*} lng 经度
+ * @param {*} lat 纬度
+ * @param {*} title 地址标题
+ * @param {*} address 地址
+ */
 const markerTemp = (lng, lat, title, address) => {
   const point = new BMap.Point(lng, lat)
   const marker = new BMap.Marker(point)
@@ -38,21 +43,25 @@ const markerTemp = (lng, lat, title, address) => {
     height: 100, // 信息窗口高度
     title: title, // 信息窗口标题
   }
-  const infoWindow = new BMap.InfoWindow(address, opts)
+
+  const info = { lng, lat, title, address }
+  // const infoWindow = new BMap.InfoWindow(address , opts)
+  const infoWindow = new BMap.InfoWindow(windowInfoTemp(info))
   map.openInfoWindow(infoWindow, point)
   marker.addEventListener('click', function () {
     map.openInfoWindow(infoWindow, point) //开启信息窗口
   })
+  const exportLng = document.querySelector('.info-exportLng')
+  console.log(exportLng)
+  exportLng.addEventListener('click', () => {
+    console.log(lng, lat)
+  })
 }
 
-const openInfo = (ctx) => {
-  // const p =
-}
-
-//构造底图时，关闭底图可点功能
+//构造底图时，关闭底图可点功能 enableMapClick
 var map = new BMap.Map('map-container', { enableMapClick: false }) //地图实例
 map.enableScrollWheelZoom(true) //开启鼠标滚轮缩放
-var myGeo = new BMap.Geocoder()
+var myGeo = new BMap.Geocoder() //解析地址
 initMap(map)
 
 /**
